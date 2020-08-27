@@ -1,0 +1,17 @@
+.todo-list  .list-group-item{
+    padding:5px 20px ;
+    border-radius: 5px;
+  width: 550px;
+}
+.todo-list{
+    padding: 0 0 0 0;
+}
+.btn-outline-danger { 
+ margin-left: 300px;
+ font-size: 12px;
+ 
+}
+.btn-outline-success{
+    margin-left: 3px;
+    font-size: 12px;
+}
