@@ -3,7 +3,8 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component{ //перетворення на клас
 state={ //створили обєкт відслідковуємо в якому стані пункти списку
-    done:false
+    done:false,
+    important:false
 }
 
   onLabelClick=()=>{ //описуємо функцію
@@ -17,16 +18,29 @@ return{
     //  console.log(this.state.done)
    }    
     
- 
+   onMarkImportant=()=>{ 
+    this.setState(({important})=>{ 
+    return{
+         important:!important
+    }
+       
+    }) 
+        
+       }    
 
     render(){ //якщо у списка змінюються властивості ця функція буде рендити
-        const {label,important,onDeleted}=this.props; //зробили деструктаризацію
-        const {done}=this.state;//щоб доступитись до state
+        const {label,onDeleted}=this.props; //зробили деструктаризацію
+        const {done,important}=this.state;//щоб доступитись до state
 
 
         let classNames='todo-list-item '//змінна з класом батьківським
         if(done){  //перевірка в якому стані done
             classNames+='done ' //додаємо батьківському класу клас done
+
+        }
+        if(important){  //перевірка в якому стані done
+            classNames+='important ' //додаємо батьківському класу клас done
+            
         }
         const style={
             color:important?'red':'black',
@@ -36,7 +50,8 @@ return{
             <span className={classNames}>
             <span style={style} className='todo-list-item-label' //викликаємо функцію описану вище
              onClick={this.onLabelClick} >{label}</span> 
-            <button type='button' className='btn btn-outline-success btn-sm float-right'>
+            <button type='button' className='btn btn-outline-success btn-sm float-right'
+             onClick={this.onMarkImportant} >
                 <i className='fa fa-exclamation'/>
             </button>
             <button type='button' className='btn btn-outline-danger btn-sm float-right'

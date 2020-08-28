@@ -8,7 +8,7 @@ import ItemStatusFilter from'../item-status-filter';
 
 import './app.css'
 import PanelToBeDone from '../panel_to_be_done';
-import AddItem from '../add-item';
+
 
 
 export default class App extends Component{
@@ -44,10 +44,10 @@ this.setState(({todoList}) =>{ //метод який перезапише пун
    </div>
   <TodoList todos={this.state.todoList}
    onDeleted={this.deleteItem}/*передали компоненти та створили функцію яка видаляє*//>
-  <div className='top-panel d-flex'>
+  
   <PanelToBeDone/>
-  <AddItem/>
-  </div>
+  
+
   </div>//передаємо назву компонента
   )
   }
