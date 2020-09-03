@@ -2,19 +2,26 @@ import React, { Component } from 'react';
 import './search-panel.css';
 
 export default class SearchPanel extends Component{
- 
-  
+ state={
+   term:''
+ }
+  onSearchChange=(e)=>{
+    const term=e.target.value;//отримуємо поточне значення для term
+    this.setState({term});//перезаписую значення
+    this.props.onSearchChange(term);//викликаємо дану функцію
+  }
   render(){
-    const searchText='type to search';
+   
     return <input type='text'
     className="form-control search-input"
-     placeholder={searchText}
-
+     placeholder='type to search' value={this.state.term} onChange={this.onSearchChange}
+     />
     
-    />
-  }
+    }
 
 }
+
+ 
 
 
 

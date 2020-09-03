@@ -2,12 +2,12 @@ import React,{Component} from 'react';
 import './todo-list-item.css';
 
 export default class TodoListItem extends Component{ //перетворення на клас
-state={ //створили обєкт відслідковуємо в якому стані пункти списку
+/*state={ //створили обєкт відслідковуємо в якому стані пункти списку
     done:false,
     important:false
-}
+}*/
 
-  onLabelClick=()=>{ //описуємо функцію
+  /*onLabelClick=()=>{ //описуємо функцію
 this.setState(({done})=>{ //функція повертає done //обновляє функція яка приймає значення що при кліку закреслений пункт
 return{
      done:!done //повертає обєкт зі станом done
@@ -26,11 +26,11 @@ return{
        
     }) 
         
-       }    
+       }    */
 
     render(){ //якщо у списка змінюються властивості ця функція буде рендити
-        const {label,onDeleted}=this.props; //зробили деструктаризацію
-        const {done,important}=this.state;//щоб доступитись до state
+        const {label,onDeleted,onToggleDone,onToggleImportant,done,important}=this.props; //зробили деструктаризацію
+        //const {done,important}=this.state;//щоб доступитись до state
 
 
         let classNames='todo-list-item '//змінна з класом батьківським
@@ -38,8 +38,8 @@ return{
             classNames+='done ' //додаємо батьківському класу клас done
 
         }
-        if(important){  //перевірка в якому стані done
-            classNames+='important ' //додаємо батьківському класу клас done
+        if(important){  
+            classNames+='important ' 
             
         }
         const style={
@@ -49,9 +49,9 @@ return{
         return (
             <span className={classNames}>
             <span style={style} className='todo-list-item-label' //викликаємо функцію описану вище
-             onClick={this.onLabelClick} >{label}</span> 
+             onClick={onToggleDone} >{label}</span> 
             <button type='button' className='btn btn-outline-success btn-sm float-right'
-             onClick={this.onMarkImportant} >
+             onClick={onToggleImportant} >
                 <i className='fa fa-exclamation'/>
             </button>
             <button type='button' className='btn btn-outline-danger btn-sm float-right'
